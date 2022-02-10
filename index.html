@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>Claim</title>
+
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="shortcut icon" href="./r.png">
+
+    <style>
+     body{
+        background-image:url('./Interstellar.png');
+		background-repeat: no-repeat;
+		background-size: 100% 100%;
+		background-attachment: fixed;
+      }
+      
+      .text{
+        color:cyan;
+      }
+	  .text1{
+		  color: cyan;
+	  }
+      #icon_box{
+        float:left;
+        position: relative;
+        left:30px;
+        top:15px; 
+      }
+
+      #title_box{
+        float:left;
+        position: relative;
+        left:50px;
+        top:20px; 
+      }
+
+      #introduce_box{
+        border:3px solid #484d53;
+        width: 900px;
+        height: 400px;
+        overflow-y:auto;
+
+        line-height: 3rem;
+        font-size: 20px;
+        position: absolute;
+
+        top: 95px;
+        left: 50%;
+        transform: translate(-50%, 0); 
+      }
+
+      .btn-secondary{
+        height: 56px;
+        border-radius: 28px;
+      }
+
+      #connect_box{
+        float:right;
+        position: relative;
+        top:15px; 
+        left:-30px;
+      }
+
+      #add_token_box{
+        float:right;
+        position: relative;
+        top:15px; 
+        left:-60px;
+      }
+
+      #claim_box{
+        position: absolute;
+        bottom: 160px;
+        left: 50%;
+        transform: translate(-50%, 0);
+      }
+
+      #claim_introduce_text_box{
+        position: absolute;
+        bottom: 100px;
+        left: 50%;
+        transform: translate(-50%, 0);
+      }
+
+      #communication_introduced{
+        font-size: 21px;
+        /* width: 100%; */
+        /* text-align: center; */
+        /* margin-left:-width/2; */
+        
+        position: absolute;
+        bottom: 30px;
+        
+        left: 50%;
+        transform: translate(-50%, 0);
+
+      }
+
+      #eth_address_text{
+        font-size: 18px;
+      }
+
+      #address_text_box{
+        position: absolute;
+        bottom: -25px;
+        left: 50%;
+        transform: translate(-50%, 0);
+      }
+
+     
+      .twitter_box{
+        bottom: -260px;
+        /* left: 5%; */
+      }
+
+      #twitter_text_box{
+        position: absolute;
+        left: 85%;
+		bottom: 2%;
+      }
+
+      #twitter_img_box{
+        position: absolute;
+        left: 82%;
+		bottom: 2%;
+      }
+
+    </style>
+	<style>a{ TEXT-DECORATION:none }</style>
+
+   </head>
+  <body>
+
+    <div id="icon_box">
+      <img src="./r.png"
+      width="50"
+      height="50">
+    </div>
+    
+
+    <div id="title_box">
+      <h2 class="text">FreedomDao</h2>
+    </div>
+	
+	
+	
+    <div id="connect_box">
+      <button id="connect" type="button" class="btn btn-secondary">connect</button>
+    </div>
+
+    <div id="add_token_box">
+      <button id="add_token" type="button" class="btn btn-secondary">add token</button>
+    </div>
+	
+	<div id="add_token_box"  style="margin-right: 120px;background: cyan;border-radius: 10px;padding: 5px;">
+		<h3>
+			<a href="./new.html" style="color: #000000;">WhitePaper</a>
+		</h3>
+	  
+	</div>
+
+    <div id="claim_box" style="margin-bottom: 80px;background: cyan;padding: 0.625rem;border-radius: 0.625rem;opacity:0.8;">
+		
+		
+		<!-- //release_time  11 days, 11 hours, 11 minutes, 11 seconds-->
+		<div style="color: red;font-size: 30px;">
+		 Countdown：
+		 <span class="JS-tian"></span>
+		 <i>Days</i>
+		 <span class="JS-shi"></span>
+		 <i>Hours</i>
+		 <span class="JS-fen"></span>
+		 <i>Minutes</i>
+		 <span class="JS-miao"></span>
+		 <i>Seconds</i>
+		</div>
+		
+    </div>
+
+	<div id="claim_box">
+	  <button id="claim" type="button" class="btn btn-secondary">claim</button>
+	</div>
+
+
+    <div id="claim_introduce_text_box">
+      <p id="claim_introduce_text" class="text"></p>
+    </div>
+    
+
+    <div id="allcommunication_introduced_box">
+
+      <div>
+        <p class="text" id="communication_introduced"  style="margin-bottom: 50px;">If you'd like to support me, send <strong id="eth">BNB</strong> here. Thank you for your support! </p>
+      </div>
+
+
+      <div id="address_text_box" style="margin-bottom: 50px;">
+        <p class="text" id="eth_address_text">BNB address: 0x844880c7e74a35Ac0Dc0605b26430409231245C3</p>
+      </div>
+
+     </div>
+	
+
+      <div>
+        <div id="twitter_img_box" class="twitter_box">
+          <img id="twitter_img" src="./twitter.png" width="50" height="50" >
+        </div>
+
+        <div id="twitter_text_box" class='twitter_box'>
+          <p class="text1">@freedomdao</p>
+        </div>
+
+      </div>
+		
+
+    </div>
+
+
+	
+	<script>
+	 (function () {
+	  var tian = document.getElementsByClassName('JS-tian')[0];
+	  var shi = document.getElementsByClassName('JS-shi')[0];
+	  var fen = document.getElementsByClassName('JS-fen')[0];
+	  var miao = document.getElementsByClassName('JS-miao')[0];
+	  var endTime = new Date('2022/07/12 23:59:59').getTime() + 1000;
+	  var interval = null;
+	  interval = setInterval(function () {
+	   var syhm = endTime - Date.now(); // 剩余毫秒
+	   if (syhm >= 0) {
+	    tian.innerText = Math.floor(syhm / 1000 / 60 / 60 / 24);
+	    shi.innerText = Math.floor(syhm / 1000 / 60 / 60 % 24);
+	    fen.innerText = Math.floor(syhm / 1000 / 60 % 60);
+	    miao.innerText = Math.floor(syhm / 1000 % 60);
+	   } else {
+	    clearInterval(interval);
+	   }
+	  }, 0);
+	 })();
+	</script>
+
+
+
+    <script type="module">
+      import { ethers } from "./js/ethers-5.2.esm.min.js";
+
+      var provider;
+      var signer;
+      var Address;
+      var Abi;
+
+      try{
+        Address = "0x308508566bb28F04FBbb060EB8e9A6968234a94e";
+        Abi = [{"inputs":[],"stateMutability":"nonpayable","type":"constructor"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"address","name":"owner","type":"address"},{"indexed":true,"internalType":"address","name":"spender","type":"address"},{"indexed":false,"internalType":"uint256","name":"value","type":"uint256"}],"name":"Approval","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"address","name":"from","type":"address"},{"indexed":true,"internalType":"address","name":"to","type":"address"},{"indexed":false,"internalType":"uint256","name":"value","type":"uint256"}],"name":"Transfer","type":"event"},{"inputs":[],"name":"all_claim","outputs":[{"internalType":"uint112","name":"","type":"uint112"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"owner","type":"address"},{"internalType":"address","name":"spender","type":"address"}],"name":"allowance","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"spender","type":"address"},{"internalType":"uint256","name":"amount","type":"uint256"}],"name":"approve","outputs":[{"internalType":"bool","name":"","type":"bool"}],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address","name":"account","type":"address"}],"name":"balanceOf","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"claim","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[],"name":"decimals","outputs":[{"internalType":"uint8","name":"","type":"uint8"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"spender","type":"address"},{"internalType":"uint256","name":"subtractedValue","type":"uint256"}],"name":"decreaseAllowance","outputs":[{"internalType":"bool","name":"","type":"bool"}],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address","name":"spender","type":"address"},{"internalType":"uint256","name":"addedValue","type":"uint256"}],"name":"increaseAllowance","outputs":[{"internalType":"bool","name":"","type":"bool"}],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address","name":"","type":"address"}],"name":"is_claim","outputs":[{"internalType":"bool","name":"","type":"bool"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"max_token_number","outputs":[{"internalType":"uint112","name":"","type":"uint112"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"name","outputs":[{"internalType":"string","name":"","type":"string"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"release_time","outputs":[{"internalType":"uint32","name":"","type":"uint32"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"return_claim_number","outputs":[{"internalType":"uint104","name":"","type":"uint104"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"_address","type":"address"}],"name":"return_is_claim","outputs":[{"internalType":"bool","name":"","type":"bool"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"symbol","outputs":[{"internalType":"string","name":"","type":"string"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"totalSupply","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"recipient","type":"address"},{"internalType":"uint256","name":"amount","type":"uint256"}],"name":"transfer","outputs":[{"internalType":"bool","name":"","type":"bool"}],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address","name":"sender","type":"address"},{"internalType":"address","name":"recipient","type":"address"},{"internalType":"uint256","name":"amount","type":"uint256"}],"name":"transferFrom","outputs":[{"internalType":"bool","name":"","type":"bool"}],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"uint256","name":"","type":"uint256"}],"name":"yet_claim_people","outputs":[{"internalType":"address","name":"","type":"address"}],"stateMutability":"view","type":"function"}];
+    
+        provider = new ethers.providers.Web3Provider(window.ethereum);
+        signer = provider.getSigner();
+
+        var is_connect = false;
+        var msg_address;
+      }
+      catch{
+      }
+
+
+      
+      var connect = document.getElementById("connect");
+      connect.addEventListener('click',async function(){
+        if(window.ethereum){
+          if(is_connect == false){
+              await provider.send("eth_requestAccounts", []);
+              msg_address = await signer.getAddress();
+              console.log(msg_address)
+              connect.innerHTML = msg_address;
+              is_connect = true;
+          }
+        }
+        else{
+          alert("Please install metamask wallet first");
+        }
+      },false)
+
+      var add_token = document.getElementById("add_token");
+      add_token.addEventListener('click',async function(){
+        if(is_connect == true){
+          const tokenaddress = '0x308508566bb28F04FBbb060EB8e9A6968234a94e';
+          const tokensymbol = 'FDD';
+          const tokendecimals = 18;
+          const tokenimage = 'http://tv.wetok.co/r.png';
+
+          const if_add = await ethereum.request({
+            method: 'wallet_watchAsset',
+            params: {
+            type: 'ERC20',
+            options: {
+                address: tokenaddress,
+                symbol: tokensymbol,
+                decimals: tokendecimals,
+                image: tokenimage,
+            },
+            },
+        });
+      }
+      else{
+        alert("Please connect the wallet first");
+      }
+
+      },false)
+
+
+      var claim = document.getElementById("claim");
+      claim.addEventListener('click',async function(){
+        if(is_connect == true){
+          var Contract = new ethers.Contract(Address, Abi, provider);
+          Contract = Contract.connect(signer);
+          var is_claim = (await Contract.return_is_claim(msg_address.toString()))
+
+          console.log(is_claim)
+          if(is_claim == false){
+            try{
+              var claim_number = (await Contract.return_claim_number()).toString();
+              claim_number = claim_number/1000000000000000000;
+              console.log(claim_number);
+              var claim_introduce_text = document.getElementById("claim_introduce_text");
+              claim_introduce_text.innerText = "you will receive:" + claim_number + " RND";
+
+              await Contract.functions.claim();
+              is_claim = true;
+
+              claim_introduce_text.innerText = "";
+            }
+            catch{
+              alert("Failed to acquire airdrop")
+              claim_introduce_text.innerText = "";
+            }
+            
+          }
+          else{
+            alert("You already picked up the airdrop");
+          }
+
+        }
+        else{
+          alert("Please connect the wallet first");
+        }
+      },false)
+
+    </script>
+
+  </body>
+<script>
+    'undefined'=== typeof _trfq || (window._trfq = []);'undefined'=== typeof _trfd && (window._trfd=[]),_trfd.push({'tccl.baseHost':'secureserver.net'}),_trfd.push({'ap':'cpsh-oh'},{'server':'p3plzcpnl489529'},{'id':'8531342'}) 
+</script>
+<script src='./js/tcc_l.combined.1.0.6.min.js'></script></html>
