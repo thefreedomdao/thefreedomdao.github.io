@@ -144,7 +144,7 @@
     </div>
 
 
-    <div id="introduce_box">
+    <div id="resizeDiv" style="overflow-y:auto;line-height: 2rem;font-size: 20px;position: absolute;top: 95px;left: 50%;transform: translate(-50%, 0);">
         <p class="text" id="introduce">
           For a long time, as an ordinary person in the blockchain token market it is difficult to get a really fair chance. The author hopes that when DAO becomes popular in 2022, author will create an opportunity for those who believe in DAO to participate in the creation and development of DAO. Here, everyone has a chance to get free tokens until all tokens are issued.<br>
 		  <br>
@@ -184,4 +184,16 @@
         
 
     </body>
+	<script>
+		$(function(){
+			$(window).resize(function(){
+				var cliWidth=document.body.clientWidth;
+				var cliHeight=document.body.clientHeight;
+				var divWidth=cliWidth-2;
+				var divHeight=cliHeight-2;
+					$('#resizeDiv').css("width",divWidth+"px");
+					$('#resizeDiv').css("height",divHeight+"px");
+			});
+		});
+	</script>
 </html>
