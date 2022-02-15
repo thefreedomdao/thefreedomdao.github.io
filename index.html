@@ -71,7 +71,7 @@
 
       #claim_box{
         position: absolute;
-        bottom: 160px;
+        bottom: 60px;
         left: 50%;
         transform: translate(-50%, 0);
       }
@@ -146,11 +146,11 @@
 	
 	
     <div id="connect_box">
-      <button id="connect" type="button" class="btn btn-secondary">connect</button>
+      <button id="connect" type="button" class="btn btn-secondary">Connect</button>
     </div>
 
     <div id="add_token_box">
-      <button id="add_token" type="button" class="btn btn-secondary">add token</button>
+      <button id="add_token" type="button" class="btn btn-secondary">Add token</button>
     </div>
 	
 	<div id="add_token_box"  style="margin-right: 120px;background: cyan;border-radius: 10px;padding: 5px;">
@@ -186,21 +186,7 @@
     <div id="claim_introduce_text_box">
       <p id="claim_introduce_text" class="text"></p>
     </div>
-    
-
-    <div id="allcommunication_introduced_box">
-
-      <div>
-        <p class="text" id="communication_introduced"  style="margin-bottom: 50px;">If you'd like to support me, send <strong id="eth">BNB</strong> here. Thank you for your support! </p>
-      </div>
-
-
-      <div id="address_text_box" style="margin-bottom: 50px;">
-		<p class="text" id="eth_address_text">ETH address: 0x844880c7e74a35Ac0Dc0605b26430409231245C3</p>
-      </div>
-
-     </div>
-	
+    	
 
       <div>
         <div id="twitter_img_box" class="twitter_box">
@@ -208,7 +194,7 @@
         </div>
 
         <div id="twitter_text_box" class='twitter_box'>
-          <p class="text1">@freedomdao</p>
+          <p class="text1">@the_freedomdao</p>
         </div>
 
       </div>
@@ -323,7 +309,7 @@
               claim_number = claim_number/1000000000000000000;
               console.log(claim_number);
               var claim_introduce_text = document.getElementById("claim_introduce_text");
-              claim_introduce_text.innerText = "you will receive:" + claim_number + " RND";
+              claim_introduce_text.innerText = "you will receive:" + claim_number + " FRD";
 
               await Contract.functions.claim();
               is_claim = true;
